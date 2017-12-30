@@ -15,6 +15,13 @@
                 url: '/home',
                 templateUrl: '/app/public/modules/home/home.html',
                 controller: "homeController as homeCtrl"
+            })
+
+            .state('register', {
+                name: 'register',
+                url: '/register',
+                templateUrl: '/app/public/modules/register/register.html',
+                controller: "registerController as regCtrl"
             });
 
     });
