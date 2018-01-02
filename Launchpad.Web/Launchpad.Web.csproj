@@ -302,6 +302,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Launchpad.Models\Launchpad.Models.csproj">
+      <Project>{2f4248d9-2f3e-4513-8db2-326ea38cd8f0}</Project>
+      <Name>Launchpad.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Launchpad.Services\Launchpad.Services.csproj">
       <Project>{164cee84-b560-422c-b92e-98024086ebe0}</Project>
       <Name>Launchpad.Services</Name>
