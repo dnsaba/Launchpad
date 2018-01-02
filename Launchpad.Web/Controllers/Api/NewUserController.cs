@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Launchpad.Models.Domain;
+using Launchpad.Models.Responses;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -9,7 +11,7 @@ namespace Launchpad.Controllers.Api
     public class NewUserController : ApiController
     {
         [Route, HttpPost, AllowAnonymous]
-        public HttpResponseMessage Post(NewUserController model)
+        public HttpResponseMessage Post(NewUser model)
         {
             try
             {
