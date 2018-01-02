@@ -9,7 +9,7 @@
         $urlRouterProvider.otherwise('/home');
 
         $stateProvider
-       
+
             .state('home', {
                 name: 'home',
                 url: '/home',
@@ -17,11 +17,10 @@
                 controller: "homeController as homeCtrl"
             })
 
-            .state('register', {
-                name: 'register',
-                url: '/register',
-                templateUrl: '/app/public/modules/register/register.html',
-                controller: "registerController as regCtrl"
+            .state({
+                name: 'register-user',
+                url: '/register-user',
+                templateUrl: '/app/public/modules/register/register-user.html'
             });
 
     });

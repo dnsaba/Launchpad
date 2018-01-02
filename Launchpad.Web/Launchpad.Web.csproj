@@ -200,6 +200,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\NewUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -217,10 +218,10 @@
     <Content Include="app\public\index.html" />
     <Content Include="app\public\modules\home\home.controller.js" />
     <Content Include="app\public\modules\home\home.html" />
-    <Content Include="app\public\modules\register\register.component.html" />
-    <Content Include="app\public\modules\register\register.controller.js" />
-    <Content Include="app\public\modules\register\register.html" />
-    <Content Include="app\public\modules\register\register.service.js" />
+    <Content Include="app\public\modules\register\register-user-comp.html" />
+    <Content Include="app\public\modules\register\register-user.controller.js" />
+    <Content Include="app\public\modules\register\register-user.html" />
+    <Content Include="app\public\modules\register\register-user.service.js" />
     <Content Include="app\public\modules\routes\app.routes.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -295,6 +296,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
