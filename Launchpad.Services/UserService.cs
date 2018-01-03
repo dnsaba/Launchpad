@@ -1,4 +1,5 @@
 ﻿using Launchpad.Models.Domain;
+using Launchpad.Services.Cryptography;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -8,6 +9,7 @@ namespace Launchpad.Services
     public class UserService
     {
         string sqlConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        CryptographyService cryptsvc = new CryptographyService();
         int RAND_LENGTH = 15;
         int HASH_ITERATION_COUNT = 1;
 
