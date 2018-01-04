@@ -19,9 +19,11 @@
 
     <!-- SERVICES-->
     <script src="/app/public/modules/register/register-user.service.js"></script>
+    <script src="/app/public/modules/login/login.service.js"></script>
     <!-- CONTROLLERS -->
     <script src="/app/public/modules/home/home.controller.js"></script>
     <script src="/app/public/modules/register/register-user.controller.js"></script>
+    <script src="/app/public/modules/login/login.controller.js"></script>
 
 </head>
 <body ng-app="publicApp">
@@ -81,7 +83,7 @@
                         <a class="nav-link" ui-sref="register-user">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Login</a>
+                        <a class="nav-link" ui-sref="login">Login</a>
                     </li>
                 </ul>
             </div>
