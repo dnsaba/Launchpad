@@ -21,6 +21,12 @@
                 name: 'register-user',
                 url: '/register-user',
                 templateUrl: '/app/public/modules/register/register-user.html'
+            })
+
+            .state({
+                name: 'login',
+                url: '/login',
+                templateUrl: '/app/public/modules/login/login.html'
             });
 
     });
