@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace Launchpad.Controllers.Api
 {
-    [System.Web.Http.RoutePrefix("api/register")]
+    [RoutePrefix("api/register")]
     public class NewUserController : ApiController
     {
         UserService _userService = new UserService();

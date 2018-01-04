@@ -7,7 +7,9 @@
 
     function LoginService($http, $q) {
         return {
-            post: _post
+            post: _post,
+            check: _check,
+            logout: _logout
         };
 
         function _post(data) {
@@ -15,6 +17,18 @@
                 data, { withCredentials: true })
                 .then(success).catch(error);
         };
+
+        function _check(data) {
+            return $http.get("/api/login/check/" + data,
+                { withCredentials: true })
+                .then(success).catch(error);
+        }
+
+        function _logout() {
+            return $http.get("/api/login/out",
+                { withCredentials: true })
+                .then(success).catch(error);
+        }
 
         function success(res) {
             return res;
