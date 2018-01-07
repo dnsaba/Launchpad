@@ -21,9 +21,23 @@
         vm.item = {};
 
         vm.$onInit = _onInit;
+        vm.testclick = _testclick;
+        vm.testclick2 = _testclick2;
 
         function _onInit() {
             console.log("launchpad controller onInit");
+        }
+
+        function _testclick() {
+            var audioclip = new Audio();
+            audioclip.src = '/app/public/audio/lp_70_fm_guitar_skank_delay.wav';
+            audioclip.play();
+        }
+
+        function _testclick2() {
+            var audioclip = new Audio();
+            audioclip.src = '/app/public/audio/lp_110_am_c_guitar_chord_delay.wav';
+            audioclip.play();
         }
     }
 })();

@@ -313,6 +313,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\public\audio\" />
     <Folder Include="App_Data\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
