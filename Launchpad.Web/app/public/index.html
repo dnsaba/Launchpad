@@ -20,10 +20,12 @@
     <!-- SERVICES-->
     <script src="/app/public/modules/register/register-user.service.js"></script>
     <script src="/app/public/modules/login/login.service.js"></script>
+    <script src="/app/public/modules/launchpad/launchpad.service.js"></script>
     <!-- CONTROLLERS -->
     <script src="/app/public/modules/home/home.controller.js"></script>
     <script src="/app/public/modules/register/register-user.controller.js"></script>
     <script src="/app/public/modules/login/login.controller.js"></script>
+    <script src="/app/public/modules/launchpad/launchpad.controller.js"></script>
 
 </head>
 <body ng-app="publicApp">
@@ -43,7 +45,7 @@
                         <a class="nav-link" href="services.html">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" ui-sref="launchpad">Launchpad</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

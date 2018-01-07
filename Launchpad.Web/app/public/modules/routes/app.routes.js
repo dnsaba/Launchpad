@@ -27,8 +27,13 @@
                 name: 'login',
                 url: '/login',
                 templateUrl: '/app/public/modules/login/login.html'
-            });
+            })
 
+            .state({
+                name: 'launchpad',
+                url: '/launchpad',
+                templateUrl: '/app/public/modules/launchpad/launchpad.html'
+            });
     });
 })();
 
