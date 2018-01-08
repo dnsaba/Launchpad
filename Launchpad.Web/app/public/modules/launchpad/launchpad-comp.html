@@ -8,14 +8,15 @@
         padding: 10px 15px;
         border: 1px solid #009;
         border-radius: 10px;
-        background-color: #87cdf9;
+        /*background-color: #87cdf9;*/
         text-align: center;
         box-shadow: 4px 4px 4px #999;
+        margin-left: 540px;
     }
 
-        #keyboard div {
+        /*#keyboard div {
             margin: 5px 0;
-        }
+        }*/
 
     #space {
         width: 184px;
@@ -37,8 +38,13 @@
             border-radius: 4px;
             box-shadow: none;
         }
+
+    input {
+        width: 60px;
+        height: 60px;
+    }
 </style>
-<div id="keyboard">
+<div id="keyboard" tabindex="1">
 
     <div>
         <input type="button" value="Q" ng-click="$ctrl.testclick()">
@@ -72,8 +78,6 @@
     </div><div>
         <input id="space" type="button" value=" ">
         <input id="clear" type="reset" value="clear">
-    </div><div>
-        <label>Track Search</label> - <input id="text" type="text" readonly="readonly">
     </div>
 
 </div><!-- end #keyboard -->
