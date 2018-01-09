@@ -46,22 +46,36 @@
 
         function _detect() {
             $('#keyboard').bind("keydown", function (e) {
-                console.log(e.keyCode);
                 var sound = vm.getSound(e.keyCode);
                 vm.playSound(sound);
             })
         }
 
-        function _playSound(sound) {
+        function _playSound(obj) {
+            var l = obj.letter;
             var audioclip = new Audio();
-            audioclip.src = sound;
+            audioclip.src = obj.file;
+            $("input[value="+l+"]").css("background-color", "blue");
             audioclip.play();
+            //$("input[value=" + l + "]").css("background-color", "transparent");
+            if (l == "Q") {
+                setTimeout(function () {
+                    $("input[value=" + l + "]").css("background-color", "white");
+                }, 11000);
+            }
+            else {
+                setTimeout(function () {
+                    $("input[value=" + l + "]").css("background-color", "white");
+                }, 2000);
+            }
+           // var myEl = angular.element(document.querySelector('input[value='+l+']'));
+            //myEl.addClass('');
         }
 
         function _getSound(kc) {
             switch (kc) {
                 case 65:
-                    return "/app/public/audio/sound2.wav";
+                    return { file: "/app/public/audio/sound2.wav", letter: "A" };
                     break;
                 case 66:
                     return "";
@@ -109,7 +123,7 @@
                     return "";
                     break;
                 case 81:
-                    return "/app/public/audio/sample1.wav";
+                    return {file: "/app/public/audio/sample1.wav", letter: "Q"};
                     break;
                 case 82:
                     return "";
