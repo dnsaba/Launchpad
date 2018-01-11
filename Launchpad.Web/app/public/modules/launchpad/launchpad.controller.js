@@ -19,6 +19,7 @@
         vm.$scope = $scope;
         vm.launchpadService = launchpadService;
         vm.item = {};
+        vm.audioinput;
 
         vm.$onInit = _onInit;
         vm.testclick = _testclick;
@@ -26,6 +27,7 @@
         vm.detect = _detect;
         vm.getSound = _getSound;
         vm.playSound = _playSound;
+        vm.uploadAudio = _uploadAudio;
 
         function _onInit() {
             console.log("launchpad controller onInit");
@@ -153,6 +155,19 @@
                     return "/app/public/audio/sample3.wav";
                     break;
             }
+        }
+
+        function _uploadAudio() {
+            vm.launchpadService.uploadAudio(vm.audioinput)
+                .then(vm.uploadAudioSuccess).catch(vm.uploadAudioError);
+        }
+
+        function _uploadAudioSuccess(res) {
+            console.log(res);
+        }
+
+        function _uploadAudioError(err) {
+            console.log(err);
         }
     }
 })();

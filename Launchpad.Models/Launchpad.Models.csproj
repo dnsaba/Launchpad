@@ -81,6 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\AudioFile.cs" />
     <Compile Include="Domain\LoginRequest.cs" />
     <Compile Include="Domain\LoginUser.cs" />
     <Compile Include="Domain\NewUser.cs" />
