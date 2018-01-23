@@ -18,8 +18,10 @@
         var vm = this;
         vm.$scope = $scope;
         vm.launchpadService = launchpadService;
-        vm.item = {};
-        vm.audioinput;
+        vm.uploadFile = false;
+        vm.audioinput = null;
+        vm.audioItem = {};
+        //vm.files = [];
 
         vm.$onInit = _onInit;
         vm.testclick = _testclick;
@@ -28,10 +30,17 @@
         vm.getSound = _getSound;
         vm.playSound = _playSound;
         vm.uploadAudio = _uploadAudio;
+        vm.uploadAudioSuccess = _uploadAudioSuccess;
+        vm.uploadAudioError = _uploadAudioError;
+        vm.getFile = _getFile;
+        vm.uploadFileChunk = _uploadFileChunk;
+        vm.uploadFileChunkSuccess = _uploadFileChunkSuccess;
+        vm.uploadFileChunkError = _uploadFileChunkError;
 
         function _onInit() {
             console.log("launchpad controller onInit");
             vm.detect();
+            vm.getFile();
         }
 
         function _testclick() {
@@ -57,7 +66,7 @@
             var l = obj.letter;
             var audioclip = new Audio();
             audioclip.src = obj.file;
-            $("input[value="+l+"]").css("background-color", "blue");
+            $("input[value=" + l + "]").css("background-color", "blue");
             audioclip.play();
             //$("input[value=" + l + "]").css("background-color", "transparent");
             if (l == "Q") {
@@ -70,7 +79,7 @@
                     $("input[value=" + l + "]").css("background-color", "white");
                 }, 2000);
             }
-           // var myEl = angular.element(document.querySelector('input[value='+l+']'));
+            // var myEl = angular.element(document.querySelector('input[value='+l+']'));
             //myEl.addClass('');
         }
 
@@ -125,7 +134,7 @@
                     return "";
                     break;
                 case 81:
-                    return {file: "/app/public/audio/sample1.wav", letter: "Q"};
+                    return { file: "/app/public/audio/sample1.wav", letter: "Q" };
                     break;
                 case 82:
                     return "";
@@ -157,9 +166,69 @@
             }
         }
 
+        function _getFile() {
+            $("#userFile").change(function (e) {
+                var file = e.target.files[0];
+
+                var reader = new FileReader();
+                reader.onloadend = function (evt) {
+                    var audio = evt.target.result;
+                    var audioInfo = audio.split(",");
+                    var getExtension = audioInfo[0].split("/");
+                    var extension = getExtension[1].split(";");
+
+                    vm.audioItem.EncodedImageFile = audioInfo[1];
+                    vm.audioItem.FileExtension = "." + extension[0];
+                }
+                reader.readAsDataURL(file);
+            })
+        }
+
         function _uploadAudio() {
-            vm.launchpadService.uploadAudio(vm.audioinput)
-                .then(vm.uploadAudioSuccess).catch(vm.uploadAudioError);
+            var fileChunks = [];
+            var file = $("#userFile")[0].files[0];
+            var maxFileSizeMb = 1;
+            var bufferChunkSize = maxFileSizeMb * (1024 * 1024);
+            var readBuffer_Size = 1024;
+            var fileStreamPos = 0;
+
+            var endPos = bufferChunkSize;
+            var size = file.size;
+
+            while (fileStreamPos < size) {
+                fileChunks.push(file.slice(fileStreamPos, endPos));
+                fileStreamPos = endPos;
+                endPos = fileStreamPos + bufferChunkSize;
+            }
+
+            var totalParts = fileChunks.length;
+            var partCount = 0;
+            var chunk = null;
+            while (chunk = fileChunks.shift()) {
+                partCount++;
+                var filePartName = file.name + ".part_" + partCount + "." + totalParts;
+
+                vm.uploadFileChunk(chunk, filePartName);
+            }
+
+            //console.log(vm.audioItem);
+            //vm.launchpadService.post(vm.audioItem)
+            //    .then(vm.uploadAudioSuccess).catch(vm.uploadAudioError);
+        }
+
+        function _uploadFileChunk(chunk, fileName){
+            //var fd = new FormData();
+            //fd.append('file', chunk, fileName);
+            vm.launchpadService.uploadFileChunk(chunk, fileName)
+                .then(vm.uploadFileChunkSuccess).catch(vm.uploadFileChunkError);
+        }
+
+        function _uploadFileChunkSuccess(res) {
+            console.log(res);
+        } 
+
+        function _uploadFileChunkError(err) {
+            console.log(err);
         }
 
         function _uploadAudioSuccess(res) {

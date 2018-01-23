@@ -82,9 +82,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\AudioFile.cs" />
+    <Compile Include="Domain\EncodedImage.cs" />
+    <Compile Include="Domain\FileChunkMetaData.cs" />
     <Compile Include="Domain\LoginRequest.cs" />
     <Compile Include="Domain\LoginUser.cs" />
     <Compile Include="Domain\NewUser.cs" />
+    <Compile Include="Domain\UploadProcessingResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Responses\BaseResponse.cs" />
     <Compile Include="Responses\ErrorResponse.cs" />

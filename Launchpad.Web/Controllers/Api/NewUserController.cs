@@ -2,6 +2,7 @@
 using Launchpad.Models.Responses;
 using Launchpad.Services;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -12,6 +13,8 @@ namespace Launchpad.Controllers.Api
     public class NewUserController : ApiController
     {
         UserService _userService = new UserService();
+        FileUploadService _filesvc = new FileUploadService();
+
         [Route, HttpPost, AllowAnonymous]
         public HttpResponseMessage Post(NewUser model)
         {
@@ -30,5 +33,6 @@ namespace Launchpad.Controllers.Api
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
     }
 }

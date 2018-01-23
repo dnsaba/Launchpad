@@ -8,20 +8,28 @@
     function LaunchpadService($http, $q) {
         return {
             post: _post,
-            uploadAudio: _uploadAudio
+            uploadFileChunk : _uploadFileChunk
         };
 
         function _post(data) {
-            return $http.post("/api/launchpad",
+            return $http.post("api/launchpad",
                 data, { withCredentials: true })
                 .then(success).catch(error);
         };
 
-        function _uploadAudio(data) {
-            return $http.post("api/launchpad/audio",
-                data, { withCredentials: true })
-                .then(success).catch(error);
-        };
+        function _uploadFileChunk(chunk, fileName) {
+            var fd = new FormData();
+            fd.append("file", chunk, fileName);
+            return $http.post("/api/launchpad/chunk",
+                fd,
+                {
+                    transformRequest: angular.identity,
+                    headers: { 'Content-Type': undefined }
+                },
+                { "withCredentials": true }
+            ).then(success)
+                .catch(error);
+        }
 
         function success(res) {
             return res;
